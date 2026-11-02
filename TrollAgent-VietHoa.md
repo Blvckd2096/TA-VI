@@ -12,3 +12,5 @@ Ghi chú build: run v2 đầu tiên (commit 8e2b050) bị hủy giữa chừng k
 Ghi chú build: run #4 (commit abaf468) cũng bị hủy vì job native-python chờ runner macOS 15 phút mà không được nhận (runner did not even start) — không phải lỗi code. Commit này chạy lại lần nữa ngay để thử lấy runner khác.
 
 Ghi chú build: run 41483581196 (v2+v3, commit 4aeac78f) đã tiến triển — native-python, native-llvm, native-nmap success, chỉ native-node và native-wheels bị hủy vì chờ runner — commit này chạy tiếp, không đổi code.
+
+Ghi chú build: run 41502201348 chỉ có native-llvm success, python/node/nmap bị hủy vì chờ runner — commit này chạy lại vào sáng 03/11, không đổi code.
