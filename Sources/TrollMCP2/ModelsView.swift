@@ -533,10 +533,10 @@ struct ModelEditorView: View {
 
                 // v7.1.107：备用模型组——主模型请求失败（网络/超时/鉴权/熔断/5xx 且未产出内容）
                 // 自动按序切换重发。对齐 OpenMinis 组路由 fallback 思想。
-                Section(header: sectionHeader("备用模型（失败自动切换）")) {
+                Section(header: sectionHeader(L10n.t("model_fallback"))) {
                     let others = ModelStore.shared.configs.filter { $0.id != (config?.id ?? UUID()) }
                     if others.isEmpty {
-                        Text("先保存其他模型配置，再回来勾选备用模型")
+                        Text(L10n.t("model_fallback_hint"))
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -563,30 +563,30 @@ struct ModelEditorView: View {
                 }
 
                 // v7.1.280-fix：老手固定模式——默认自适应（新手），可关自动修正/限降级链（老手要可预测）
-                Section(header: sectionHeader("固定模式（老手可选）")) {
+                Section(header: sectionHeader(L10n.t("model_fixed"))) {
                     Toggle(isOn: $protocolAutoFixEnabled) {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("协议自动修正")
+                            Text(L10n.t("model_proto_fix"))
                                 .font(.subheadline)
-                            Text("开=按模型自动纠偏并记住（默认）；关=尊重手动选择，失败按所选协议报错")
+                            Text(L10n.t("model_proto_fix_hint"))
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                         }
                     }
-                    Picker("降级链上限", selection: $compatMaxLevel) {
-                        Text("固定 L0（失败即报错）").tag(0)
+                    Picker(L10n.t("model_degrade_limit"), selection: $compatMaxLevel) {
+                        Text(L10n.t("model_fixed_l0")).tag(0)
                         Text("L0-L1").tag(1)
                         Text("L0-L2").tag(2)
                         Text("L0-L3").tag(3)
                         Text("L0-L4").tag(4)
-                        Text("全链自适应 L0-L5（默认）").tag(5)
+                        Text(L10n.t("model_full_adaptive")).tag(5)
                     }
                     // v7.1.281-fix：流式传输开关——首字节超时自动置关（持久化），可手动恢复
                     Toggle(isOn: $streamEnabled) {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("流式传输")
+                            Text(L10n.t("model_stream"))
                                 .font(.subheadline)
-                            Text("开=请求走 SSE 流式（默认）；关=直接非流式。首字节超时会自动置关并记住")
+                            Text(L10n.t("model_stream_hint"))
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                         }

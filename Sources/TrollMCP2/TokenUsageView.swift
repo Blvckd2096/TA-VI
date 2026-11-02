@@ -26,7 +26,7 @@ struct ContextUsageBar: View {
         Button(action: { showDetail = true }) {
             VStack(spacing: 6) {
                 HStack {
-                    Text("上下文占用")
+                    Text(L10n.t("ctx_usage"))
                         .font(.caption)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
@@ -90,7 +90,7 @@ struct TokenUsageDetailView: View {
             .padding(16)
         }
         .background(Color(.systemGroupedBackground))
-        .navigationTitle("上下文占用")
+        .navigationTitle(L10n.t("ctx_usage"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -110,7 +110,7 @@ struct TokenUsageDetailView: View {
 
     private var currentCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("当前会话")
+            Text(L10n.t("ctx_current"))
                 .font(.subheadline)
                 .fontWeight(.semibold)
             HStack {
@@ -131,11 +131,11 @@ struct TokenUsageDetailView: View {
                 }
             }
             .frame(height: 8)
-            Text("压力分级：<60% 正常 · ≥60% 压缩输出 · ≥75% 激进摘要 · ≥90% 自动 compact")
+            Text(L10n.t("ctx_pressure"))
                 .font(.caption2)
                 .foregroundColor(.secondary)
             // v7.1.280-fix：标注估算口径——CJK×2/ASCII÷3/图×600 为粗估且保守偏高（防超预算）
-            Text("Token 为估算值（中文≈2/字·英文≈3字符/token·图片≈600/张），仅供压力参考，非模型精确计数")
+            Text(L10n.t("ctx_token_note"))
                 .font(.caption2)
                 .foregroundColor(.secondary)
         }
@@ -146,14 +146,14 @@ struct TokenUsageDetailView: View {
 
     private var overviewCard: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("总览")
+            Text(L10n.t("ctx_overview"))
                 .font(.subheadline)
                 .fontWeight(.semibold)
             HStack(spacing: 0) {
-                statCell(title: "会话", value: "\(stats["sessionCount"] as? Int64 ?? 0)")
-                statCell(title: "消息", value: "\(stats["totalMessages"] as? Int64 ?? 0)")
-                statCell(title: "总 token", value: fmtK(stats["totalTokenEstimate"] as? Int64 ?? 0))
-                statCell(title: "最大会话", value: fmtK(stats["maxSessionTokenEstimate"] as? Int64 ?? 0))
+                statCell(title: L10n.t("ctx_session"), value: "\(stats["sessionCount"] as? Int64 ?? 0)")
+                statCell(title: L10n.t("ctx_message"), value: "\(stats["totalMessages"] as? Int64 ?? 0)")
+                statCell(title: L10n.t("ctx_total_token"), value: fmtK(stats["totalTokenEstimate"] as? Int64 ?? 0))
+                statCell(title: L10n.t("ctx_max_session"), value: fmtK(stats["maxSessionTokenEstimate"] as? Int64 ?? 0))
             }
         }
         .padding(14)
@@ -163,7 +163,7 @@ struct TokenUsageDetailView: View {
 
     private var rankingCard: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("最大会话 TOP\(indexRows.count)")
+            Text(L10n.t("ctx_max_session") + " TOP\(indexRows.count)")
                 .font(.subheadline)
                 .fontWeight(.semibold)
             ForEach(Array(indexRows.enumerated()), id: \.offset) { i, row in
@@ -181,13 +181,13 @@ struct TokenUsageDetailView: View {
                         .font(.caption2)
                         .monospacedDigit()
                         .foregroundColor(.secondary)
-                    Text("\(row["messageCount"] as? Int64 ?? 0)条")
+                    Text("\(row["messageCount"] as? Int64 ?? 0) " + L10n.t("ctx_msg_suffix"))
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }
             }
             if indexRows.isEmpty {
-                Text("暂无会话数据")
+                Text(L10n.t("ctx_no_data"))
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
