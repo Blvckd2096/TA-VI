@@ -10,3 +10,5 @@ Fork từ zrrt/TrollAgent, thêm ngôn ngữ `vi` (Tiếng Việt) vào hệ L10
 Ghi chú build: run v2 đầu tiên (commit 8e2b050) bị hủy giữa chừng khi các job native đang chạy, job build chính chưa chạy — commit này chỉ để chạy lại build v2 từ đầu, không đổi code.
 
 Ghi chú build: run #4 (commit abaf468) cũng bị hủy vì job native-python chờ runner macOS 15 phút mà không được nhận (runner did not even start) — không phải lỗi code. Commit này chạy lại lần nữa ngay để thử lấy runner khác.
+
+Ghi chú build: run 41483581196 (v2+v3, commit 4aeac78f) đã tiến triển — native-python, native-llvm, native-nmap success, chỉ native-node và native-wheels bị hủy vì chờ runner — commit này chạy tiếp, không đổi code.
