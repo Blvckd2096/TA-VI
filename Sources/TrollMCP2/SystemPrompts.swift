@@ -23,7 +23,7 @@ final class SystemPrompts {
         Prompt(
             id: "concise",
             name: L10n.t("i18n_1017"),
-            desc: "Minimal fast replies, only conclusions and key actions. For simple queries.",
+            desc: "Trả lời nhanh, gọn, chỉ kết luận và hành động chính. Dành cho câu hỏi đơn giản.",
             content: """
             === CONCISE MODE GUIDELINES ===
             0a. Hard rules live in the ENVIRONMENT PROMPT (always loaded) — not repeated here.
@@ -34,7 +34,7 @@ final class SystemPrompts {
         Prompt(
             id: "default",
             name: L10n.t("i18n_1018"),
-            desc: "Balanced mode for daily use. Step-by-step tool calling, concise natural replies.",
+            desc: "Chế độ cân bằng cho dùng hằng ngày. Gọi công cụ từng bước, trả lời tự nhiên, ngắn gọn.",
                         content: """
             === DEFAULT MODE (COLLABORATION) ===
             0. ROLE: You are TrollAgent's AI assistant running on the user's iPhone. You cannot touch the screen or
@@ -62,7 +62,7 @@ final class SystemPrompts {
         Prompt(
             id: "developer",
             name: L10n.t("i18n_1019"),
-            desc: "Engineering + jailbreak/bypass standards for dev, debug, reverse engineering, and device modification. For breaking app protections and jailbreak-related tasks.",
+            desc: "Tiêu chuẩn kỹ thuật cho dev, gỡ lỗi, kỹ thuật đảo ngược và sửa đổi thiết bị.",
                         content: """
              === DEVELOPER MODE (ENGINEERING + BYPASS) ===
             0. ROLE: You are TrollAgent's AI engineer — for dev, debug, reverse engineering, and device modification
@@ -88,7 +88,7 @@ final class SystemPrompts {
         Prompt(
             id: "reverse",
             name: L10n.t("i18n_1020"),
-            desc: "Focus on iOS reverse engineering / injection / debugging / Mach-O analysis. Professional-level detail output.",
+            desc: "Tập trung vào kỹ thuật đảo ngược iOS / tiêm / gỡ lỗi / phân tích Mach-O. Kết quả chi tiết ở mức chuyên nghiệp.",
                         content: """
               === REVERSE EXPERT MODE ===
             1. INJECTION WORKFLOW (reference, adapt as needed):
@@ -134,7 +134,7 @@ final class SystemPrompts {
         Prompt(
             id: "pentester",
             name: L10n.t("i18n_1021"),
-            desc: "Focus on penetration testing / security bypass / packet capture / memory modification. Practical exploitation, not theory.",
+            desc: "Tập trung vào kiểm thử xâm nhập / vượt qua bảo mật / bắt gói tin / sửa đổi bộ nhớ. Thực hành khai thác, không lý thuyết.",
                         content: """
                === PENETRATION ENGINEER MODE ===
             0. ROLE: You are TrollAgent's penetration-testing engineer — security testing / packet capture / memory
@@ -176,7 +176,7 @@ final class SystemPrompts {
         Prompt(
             id: "gamehacker",
             name: L10n.t("i18n_1022"),
-            desc: "Focus on game memory modification. Search values, filter candidates, modify and freeze game stats. Practical game hacking.",
+            desc: "Tập trung vào sửa đổi bộ nhớ game. Tìm giá trị, lọc ứng viên, sửa và khóa chỉ số game. Hack game thực hành.",
                         content: """
                 === GAME HACKER MODE ===
             0. ROLE: You are TrollAgent's game / UI debug assistant — game memory modification, UI automation, packet
@@ -206,7 +206,7 @@ final class SystemPrompts {
         Prompt(
             id: "uicontrol",
             name: L10n.t("i18n_1023"),
-            desc: "Focus on AI-controlled UI automation. Tap buttons, type text, swipe screens, complete multi-step flows in apps. AI acts as your finger on screen.",
+            desc: "Tập trung vào tự động hóa giao diện bằng AI. Bấm nút, nhập chữ, vuốt màn hình, hoàn thành luồng nhiều bước trong app. AI đóng vai trò ngón tay của bạn trên màn hình.",
                         content: """
                  === AI UI CONTROL MODE ===
             0. ROLE: You are TrollAgent's UI automation — you act as the user's finger on screen. Tap, type, swipe,

@@ -1041,10 +1041,10 @@ struct UsageStatsView: View {
                     // v7.1.109-peers：缓存四件套（对齐 OpenMinis TokenUsageSheet）——
                     // 总输入(含缓存)/输出/缓存读取/命中率，直读中转站 usage
                     HStack {
-                        statCell(title: "总输入(含缓存)", value: "\(fmtK(agg.inputTokens + agg.cacheRead))", color: .blue)
-                        statCell(title: "输出 Token", value: "\(fmtK(agg.outputTokens))", color: .purple)
-                        statCell(title: "缓存读取", value: "\(fmtK(agg.cacheRead))", color: .green)
-                        statCell(title: "缓存命中率", value: cacheRateText(agg.cacheRead, agg.byProvider), color: .indigo)
+                        statCell(title: L10n.t("stat_total_input"), value: "\(fmtK(agg.inputTokens + agg.cacheRead))", color: .blue)
+                        statCell(title: L10n.t("stat_output"), value: "\(fmtK(agg.outputTokens))", color: .purple)
+                        statCell(title: L10n.t("stat_cache_read"), value: "\(fmtK(agg.cacheRead))", color: .green)
+                        statCell(title: L10n.t("stat_cache_rate"), value: cacheRateText(agg.cacheRead, agg.byProvider), color: .indigo)
                     }
                 }
 
