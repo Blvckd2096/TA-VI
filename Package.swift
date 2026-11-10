@@ -112,6 +112,11 @@ let package = Package(
                 .unsafeFlags([
                     "-L", "hud-stage/lib", "-lHUD",
                     "-F", "HUD/libraries",
+                    // AOT（rcarmo 录制式）：强制引用 _ish_aot_register（libish.a 内核 jit.c 导出，
+                    // -Djit=true 默认带上），防止 aot_*.S constructor 引用的符号在链接时被解析失败/裁剪。
+                    // 对照 rcarmo AppARM64AOTBootstrap.xcconfig 的 -Wl,-u,_ish_aot_register。
+                    // 必须放 unsafeFlags 内——新版 SwiftPM linkerSettings 只接受 LinkerSetting 枚举，裸字符串编译不过。
+                    "-Xlinker", "-u", "-Xlinker", "_ish_aot_register",
                     // v4.5.3：私有 framework 全部 weak 链接（-Xlinker 透传，swiftc 不认 -weak_framework）——
                     // 正常 App 启动时即使 dyld 加载这些 framework 受限也不致崩溃；HUD 只在 -hud 分支真正调用。
                     "-Xlinker", "-weak_framework", "-Xlinker", "BackBoardServices",
